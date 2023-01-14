@@ -58,5 +58,21 @@ public class GenericoHttp {
        
         return response;
     }
+    public ResponseEntity<?> postService( URI uri,Object data, Class<?> objectClass )
+            throws Exception {
+            ResponseEntity<?> response;
+            response = ( ResponseEntity<?> ) this.httpClient.post( uri,
+            														data,
+                                                                  objectClass,
+                                                                  MediaType.APPLICATION_JSON                                                           );
+            if( !ObjectUtils.isEmpty( response ) ) {
+              //  log.trace( "Service " + uri + " response with http status code: " + response.getStatusCode() + ". " +
+                         //  "Response:  " + ( new Gson() ).toJson( response ) );
+            }
+            else {
+            //    log.warn( "Response is empty: " + response );
+            }
+            return response;
+        }
 
 }
